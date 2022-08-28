@@ -1,10 +1,10 @@
 <template>
     <div>
         <button id = "button1">Button</button>
-        <section v-for="(secret, index) in secrets" :key="index"  :class="{pinkPink}" @click = "pinkPink = !pinkPink">
-           
+        <section v-for="(secret, index) in secrets" :key="index" >
+         <div @click="changeColor">
             <p >{{secret}}</p>
-        
+         </div>
         </section>
     </div>
 </template>
@@ -23,6 +23,7 @@
         },
         mounted () {
             document.getElementById(`button1`).addEventListener(`click`, this.turn_blue);
+            
         },
         name: 'fun-component',
 
@@ -31,7 +32,11 @@
                       document.body.insertAdjacentHTML(`beforeend`, '<h1>testing to see if works</h1>');
         document.body[`style`][`background`]= 'blue';
             },
+            // using details and target allows for individual target of the element
+          changeColor(details) {
+            details.target.style.background = "pink";
           
+          }
         }
        
         }
@@ -46,8 +51,9 @@
 </script>
 
 <style scoped>
+
 .pinkPink {
     
-    background: pink;
+ 
 }
 </style>
