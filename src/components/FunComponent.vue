@@ -2,7 +2,8 @@
     <div>
         <button id = "button1">Button</button>
         <section v-for="(secret, index) in secrets" :key="index" >
-         <div @click="changeColor">
+         <div @click="changeColor" >
+        
             <p >{{secret}}</p>
          </div>
         </section>
@@ -18,7 +19,8 @@
                 myStyle:{
                 background: "pink"
             },
-            pinkPink: false
+            pinkPink: false,
+            isPink: false
             }
         },
         mounted () {
@@ -33,8 +35,13 @@
         document.body[`style`][`background`]= 'blue';
             },
             // using details and target allows for individual target of the element
-          changeColor(details) {
-            details.target.style.background = "pink";
+          changeColor(aaaaa) {
+            this.isPink = !this.isPink;
+            if (this.isPink) {
+                aaaaa.target.style.background = "pink";
+            } else {
+                aaaaa.target.style.background = "transparent";
+            }
           
           }
         }
